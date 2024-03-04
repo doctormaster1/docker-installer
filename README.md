@@ -51,6 +51,7 @@ Containers with Compose files
 - [ ] OpenVas
 - [ ] Nessus Essentials
 - [ ] ZAP
+- [ ] Caido
 
 ### Incident Response
 - [ ] Iris
@@ -63,6 +64,7 @@ Containers with Compose files
 - [ ] Catalyst
 - [ ] TheHive
 - [ ] Shuffle
+- [ ] CoPilot 
 
 ### Database
 - [ ] MongoDB
