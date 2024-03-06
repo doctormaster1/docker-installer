@@ -1,0 +1,11 @@
+version: '3'
+services:
+  portainer:
+    image: portainer/agent:2.19.4
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/docker_data/portainer/data:/data
+    ports:
+      - "9001:9001"
