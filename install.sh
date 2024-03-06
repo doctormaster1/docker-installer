@@ -42,3 +42,30 @@ menu_docker_install() {
 menu_docker_managment() {}
 
 menu_container_managment() {}
+
+ubuntu_install_docker() {
+    echo "Updating the system..."
+    sudo apt-get update
+    echo "Installing required packages..."
+    sudo apt-get install ca-certificates curl -y
+    
+    echo "Creating Docker key directory..."
+    sudo install -m 0755 -d /etc/apt/keyrings
+    
+    echo "Downloading Docker GPG key..."
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    
+    echo "Setting read permission for the key file..."
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    
+    echo "Adding Docker APT source..."
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    
+    echo "Updating the system again..."
+    sudo apt-get update
+    
+    echo "Installing Docker and related packages..."
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+    
+    echo "Docker has been successfully installed and configured."
+}
